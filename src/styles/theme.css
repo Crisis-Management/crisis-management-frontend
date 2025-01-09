@@ -1,0 +1,20 @@
+:root {
+    --primary: #16a34a;
+    --primary-light: #22c55e;
+    --secondary: #64748b;
+    --accent: #4ade80;
+    --background: #ffffff;
+    --text: #1a202c;
+    --text-light: #4a5568;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --warning: #f59e0b;
+  }
+  
+  .bg-primary { background-color: var(--primary); }
+  .text-primary { color: var(--primary); }
+  .border-primary { border-color: var(--primary); }
+  
+  /* Hover states */
+  .hover\:bg-primary-light:hover { background-color: var(--primary-light); }
+  .hover\:text-primary-light:hover { color: var(--primary-light); }
