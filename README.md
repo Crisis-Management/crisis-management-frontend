@@ -1,7 +1,3 @@
-Got it! Let's update the README file with the correct directory structure and API endpoints based on the provided link.
-
----
-
 # Crisis Management Frontend
 
 This repository contains the frontend code for the Crisis Management application. The project is built using React, TypeScript, and Vite, and it integrates with a NestJS backend and PostgreSQL database.
