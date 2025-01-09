@@ -98,7 +98,7 @@ To get started with the project, follow these steps:
    ```
 4. **Start the development server**:
    ```
-   npm start
+   npm run dev
    ```
 
 ## Contributing
