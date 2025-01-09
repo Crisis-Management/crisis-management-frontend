@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RoleList } from './RoleList';
 import { RoleModal } from './RoleModal';
-import { Button } from '../ui/Button';
+import Button from '../ui/Button';
 import { Plus } from 'lucide-react';
 import { useRoles } from '../../hooks/useRoles';
 import { Role } from '../../types/roles';
@@ -21,10 +21,10 @@ export const RoleManagement = () => {
     setSelectedRole(undefined);
   };
 
-  const handleEdit = (role: Role) => {
-    setSelectedRole(role);
-    setIsModalOpen(true);
-  };
+  // const handleEdit = (role: Role) => {
+  //   setSelectedRole(role);
+  //   setIsModalOpen(true);
+  // };
 
   const handleCreate = () => {
     setSelectedRole(undefined);
@@ -41,7 +41,7 @@ export const RoleManagement = () => {
         </Button>
       </div>
 
-      <RoleList onEdit={handleEdit} />
+      <RoleList />
 
       <RoleModal
         isOpen={isModalOpen}

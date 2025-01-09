@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import { useRoles } from '../../hooks/useRoles';
 import { Badge } from '../ui/Badge';
-import { Button } from '../ui/Button';
+import Button from '../ui/Button';
 import { Edit, Trash2 } from 'lucide-react';
 
 export const RoleList = () => {
@@ -39,11 +39,11 @@ export const RoleList = () => {
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <Button variant="ghost" size="sm" className="mr-2">
+                <Button variant="primary" size="sm" className="mr-2">
                   <Edit className="h-4 w-4" />
                 </Button>
                 <Button
-                  variant="ghost"
+                  variant="primary"
                   size="sm"
                   onClick={() => deleteRole(role.id)}
                   className="text-red-600 hover:text-red-900"

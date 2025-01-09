@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Role, Permission } from '../../types/roles';
 import { Input } from '../ui/Input';
-import { Button } from '../ui/Button';
+import Button from '../ui/Button';
 import { useRoles } from '../../hooks/useRoles';
 
 interface RoleFormProps {
@@ -15,7 +15,7 @@ export const RoleForm = ({ role, onSubmit, onCancel }: RoleFormProps) => {
   const [formData, setFormData] = useState({
     name: role?.name || '',
     description: role?.description || '',
-    permissions: role?.permissions?.map(p => p.id) || []
+    permissions: role?.permissions?.map(p => ({ id: p.id, name: p.name, description: p.description, resource: p.resource, action: p.action })) || []
   });
 
   useEffect(() => {
@@ -27,12 +27,12 @@ export const RoleForm = ({ role, onSubmit, onCancel }: RoleFormProps) => {
     await onSubmit(formData);
   };
 
-  const handlePermissionChange = (permissionId: string) => {
+  const handlePermissionChange = (permission: Permission) => {
     setFormData(prev => ({
       ...prev,
-      permissions: prev.permissions.includes(permissionId)
-        ? prev.permissions.filter(id => id !== permissionId)
-        : [...prev.permissions, permissionId]
+      permissions: prev.permissions.some(p => p.id === permission.id)
+        ? prev.permissions.filter(p => p.id !== permission.id)
+        : [...prev.permissions, permission]
     }));
   };
 
@@ -66,8 +66,8 @@ export const RoleForm = ({ role, onSubmit, onCancel }: RoleFormProps) => {
             <label key={permission.id} className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                checked={formData.permissions.includes(permission.id)}
-                onChange={() => handlePermissionChange(permission.id)}
+                checked={formData.permissions.includes(permission)}
+                onChange={() => handlePermissionChange(permission)}
                 className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
               <span className="text-sm text-gray-700">
