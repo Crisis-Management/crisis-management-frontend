@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { authApi } from '../lib/api/auth';
 import { LoginCredentials, RegisterData, AuthResponse } from '../types/auth';
 import toast from 'react-hot-toast';
+import { User } from '../types/api'; 
 
 export const useAuth = () => {
   const [user, setUser] = useState(null);
@@ -10,10 +11,10 @@ export const useAuth = () => {
   const login = async (credentials: LoginCredentials) => {
     try {
       const response = await authApi.login(credentials);
-      setUser(response.user);
+      setUser(response.user ? response.user as User : null);
       toast.success('Successfully logged in');
       return response;
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.message || 'Login failed');
       throw error;
     }
@@ -22,10 +23,10 @@ export const useAuth = () => {
   const register = async (data: RegisterData) => {
     try {
       const response = await authApi.register(data);
-      setUser(response.user);
+      setUser(response.user ? response.user as User : null);
       toast.success('Successfully registered');
       return response;
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.message || 'Registration failed');
       throw error;
     }
